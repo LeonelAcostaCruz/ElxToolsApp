@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,18 @@ export class UtilsService {
     private router: Router,
     private modalCtrl: ModalController
   ) { }
+
+
+  async takePicture () {
+  return await Camera.getPhoto({
+    quality: 90,
+    allowEditing: true,
+    resultType: CameraResultType.DataUrl,
+    source: CameraSource.Prompt,
+    promptLabelPhoto: 'Seleccione una imagen',
+    promptLabelPicture: 'Toma una foto'
+  });
+};
 
   // ====================Loading===========================
 
