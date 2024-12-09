@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
   utilSvc = inject(UtilsService);
 
   products: Product [] = [];
+  loading: boolean = false;
 
 
   ngOnInit() {
@@ -25,7 +26,7 @@ export class HomePage implements OnInit {
   //   this.firebaseSvc.singOut();
   // }
 
-  // obtener datos
+  // obtener datos tools
 
   user (){
     return this.utilSvc.getFromLocalStorage('user');
@@ -37,10 +38,14 @@ export class HomePage implements OnInit {
   getProducts() {
     let path =  `user/${this.user().uid}/products`;
 
+    this.loading = true;
+
     let sub = this.firebaseSvc.getCollectionData(path).subscribe({
       next : (res:any)=>{
         console.log(res);
         this.products = res;
+        this.loading = false;
+
         sub.unsubscribe();
       }
     });
@@ -59,5 +64,63 @@ export class HomePage implements OnInit {
 
     if (success) this.getProducts();
   }
+
+  async confirmDeleteProduct(product: Product) {
+   this.utilSvc.presentAlert({
+      header: 'Confirmar Eliminación!',
+      message: '¿Está seguro de eliminar este producto?',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar'
+        }, {
+          text: 'Sí, Eliminar',
+          handler: () => {
+            this.deleteProduct(product);
+          }
+        }
+      ]
+    });
+  }
+
+   //eliminar Tool
+   async deleteProduct(product: Product) {
+
+    let path = `user/${this.user().uid}/products/${product.id}`
+
+    const loading = await this.utilSvc.loading();
+    await loading.present();
+
+    let imagePath = await this.firebaseSvc.getFilePath(product.image);
+    await this.firebaseSvc.deleteFile(imagePath);
+
+
+    this.firebaseSvc.deleteDocument(path).then(async res => {
+
+      this.products = this.products.filter(p => p.id!== product.id);
+
+      this.utilSvc.presentToast({
+        message: 'Producto Eliminado exitosamente',
+        duration: 1500,
+        color: 'success',
+        position: 'middle',
+        icon: 'check-circle-outline'
+      })
+
+    }).catch(error => {
+      console.log(error);
+
+      this.utilSvc.presentToast({
+        message: error.message,
+        duration: 2500,
+        color: 'primary',
+        position: 'middle',
+        icon: 'alert-circle-outline'
+      })
+
+    }).finally(() => {
+      loading.dismiss();
+    });
+  }//fin editar
 
 }

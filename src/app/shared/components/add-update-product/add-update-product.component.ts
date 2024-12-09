@@ -139,5 +139,7 @@ export class AddUpdateProductComponent implements OnInit {
       loading.dismiss();
     });
   }//fin editar
+
+
 }
 

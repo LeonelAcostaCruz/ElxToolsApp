@@ -1,4 +1,4 @@
-<app-header [isModal]="true" title="Agregar Tool"></app-header>
+<app-header [isModal]="true" [title]="product ? 'Actualizar Tool' : 'Agregar Tool'"></app-header>
 
 <ion-content>
   <form formGoup="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
@@ -61,7 +61,7 @@
 
 
       <ion-button mode="ios" class="ion-no-margin" type="submit" [disabled]="form.invalid">
-        Agregar Tool
+        {{product ? 'Actualizar Tool' : 'Agregar Tool'}}
         <ion-icon slot="end" name="checkmark-circle-aoutline"></ion-icon>
       </ion-button>
 
