@@ -43,7 +43,7 @@ export class FirebaseService {
     return sendPasswordResetEmail(getAuth(), email);
   }
 
-
+  // ==Cerrar sesion =================================
   singOut(){
     getAuth().signOut();
     localStorage.removeItem('user');

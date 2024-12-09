@@ -15,15 +15,12 @@ export const noAuthGuard: CanActivateFn = (route, state) => {
 
     firebaseSvc.getAuth().onAuthStateChanged((auth) => {
 
-      if (auth) {
-        if (user) resolve(true);
-      }
+      if (!auth) resolve(true);
+
       else {
-        utilSvc.routerLink('/auth');
+        utilSvc.routerLink('/main/home');
         resolve(false);
       }
     })
-    return true;
   });
-
 };

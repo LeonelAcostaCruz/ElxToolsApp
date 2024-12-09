@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { AddUpdateProductComponent } from 'src/app/shared/components/add-update-product/add-update-product.component';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,26 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class HomePage implements OnInit {
 
-   firebaseSvc = inject (FirebaseService);
-  utilSvc = inject (UtilsService);
+  firebaseSvc = inject(FirebaseService);
+  utilSvc = inject(UtilsService);
 
   ngOnInit() {
   }
 
-// ===Cerrar Sesion =========================
-signOut(){
-  this.firebaseSvc.singOut();
-}
+  // ===Cerrar Sesion ========
+  signOut() {
+    this.firebaseSvc.singOut();
+  }
+
+  // =======Agregar o actualizar producto ========
+
+  addUpdateProduct() {
+
+    this.utilSvc.presentModal({
+      component: AddUpdateProductComponent,
+      cssClass: 'add-update-product'
+
+    })
+  }
 
 }

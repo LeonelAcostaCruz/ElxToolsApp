@@ -8,9 +8,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // ===== FireBase =====
-
-// import {AngularFireModule} ';
-// import {enviroment} from 'src/envioments/enviroment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 
