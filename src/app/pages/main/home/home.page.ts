@@ -3,6 +3,9 @@ import { Product } from 'src/app/models/product.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { AddUpdateProductComponent } from 'src/app/shared/components/add-update-product/add-update-product.component';
+import { orderBy } from 'firebase/firestore';
+import { User } from 'src/app/models/user.model';
+
 
 @Component({
   selector: 'app-home',
@@ -14,7 +17,7 @@ export class HomePage implements OnInit {
   firebaseSvc = inject(FirebaseService);
   utilSvc = inject(UtilsService);
 
-  products: Product [] = [];
+  products: Product[] = [];
   loading: boolean = false;
 
 
@@ -28,22 +31,34 @@ export class HomePage implements OnInit {
 
   // obtener datos tools
 
-  user (){
+  user(): User {
     return this.utilSvc.getFromLocalStorage('user');
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getProducts();
   }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.getProducts();
+      event.target.complete();
+    }, 1000);
+  }
   getProducts() {
-    let path =  `user/${this.user().uid}/products`;
+    let path = `user/${this.user().uid}/products`;
 
     this.loading = true;
 
-    let sub = this.firebaseSvc.getCollectionData(path).subscribe({
-      next : (res:any)=>{
+    let query = (
+      orderBy('horaEntrega', 'desc' )
+    )
+
+    let sub = this.firebaseSvc.getCollectionData(path, query).subscribe({
+      next: (res: any) => {
         console.log(res);
         this.products = res;
+
         this.loading = false;
 
         sub.unsubscribe();
@@ -53,12 +68,12 @@ export class HomePage implements OnInit {
 
   // =======Agregar o actualizar producto ========
 
-  async addUpdateProduct(product?:Product) {
+  async addUpdateProduct(product?: Product) {
 
-   let success = await this.utilSvc.presentModal({
+    let success = await this.utilSvc.presentModal({
       component: AddUpdateProductComponent,
       cssClass: 'add-update-modal',
-      componentProps: {product}
+      componentProps: { product }
 
     })
 
@@ -66,7 +81,7 @@ export class HomePage implements OnInit {
   }
 
   async confirmDeleteProduct(product: Product) {
-   this.utilSvc.presentAlert({
+    this.utilSvc.presentAlert({
       header: 'Confirmar Eliminación!',
       message: '¿Está seguro de eliminar este producto?',
       mode: 'ios',
@@ -83,8 +98,8 @@ export class HomePage implements OnInit {
     });
   }
 
-   //eliminar Tool
-   async deleteProduct(product: Product) {
+  //eliminar Tool
+  async deleteProduct(product: Product) {
 
     let path = `user/${this.user().uid}/products/${product.id}`
 
@@ -97,7 +112,7 @@ export class HomePage implements OnInit {
 
     this.firebaseSvc.deleteDocument(path).then(async res => {
 
-      this.products = this.products.filter(p => p.id!== product.id);
+      this.products = this.products.filter(p => p.id !== product.id);
 
       this.utilSvc.presentToast({
         message: 'Producto Eliminado exitosamente',

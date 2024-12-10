@@ -1,3 +1,4 @@
+
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User} from 'src/app/models/user.model';
@@ -91,7 +92,7 @@ export class AuthPage implements OnInit {
 
       this.firebaseSvc.getDocument(path).then ( (user: User) => {
 
-        this.utilsSvc.saveLocalStorage('user', user);
+        this.utilsSvc.saveInLocalStorage('user', user);
         this.utilsSvc.routerLink('/main/home');
         this.form.reset();
 

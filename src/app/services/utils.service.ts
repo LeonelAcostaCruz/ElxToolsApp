@@ -60,7 +60,7 @@ export class UtilsService {
 
   //========================Guarda un elemento en localstorage===========================
 
-  saveLocalStorage(key: string, value: any) {
+  saveInLocalStorage(key: string, value: any) {
     return localStorage.setItem(key, JSON.stringify(value));
   }
 

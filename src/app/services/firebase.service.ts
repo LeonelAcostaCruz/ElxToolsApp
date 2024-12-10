@@ -99,7 +99,7 @@ export class FirebaseService {
     })
   }
 
-  //obtener ruta de ka imagen con su url
+  //obtener ruta de la imagen con su url
 
   async getFilePath(url: string){
     return ref(getStorage(), url).fullPath

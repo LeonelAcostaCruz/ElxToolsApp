@@ -35,6 +35,7 @@ export class AddUpdateProductComponent implements OnInit {
     if (this.product) this.form.setValue(this.product);
   }
 
+  //Tomar foto
   async takeImage() {
     const dataUrl = (await this.utilsSvc.takePicture()).dataUrl;
     this.form.controls.image.setValue(dataUrl);
@@ -48,6 +49,17 @@ export class AddUpdateProductComponent implements OnInit {
     }
   }
 
+
+  // conversor de  String  a number
+
+    // setNumberInputs(){
+    //   let {horaEntrega} = this.form.controls;
+    //   if(horaEntrega.value){
+    //     horaEntrega.setValue(parseInt(horaEntrega.value));
+    //   }
+    // }
+
+  // create product
 
   async createProduct() {
 
@@ -69,7 +81,7 @@ export class AddUpdateProductComponent implements OnInit {
       this.utilsSvc.dismissModal({ success: true });
 
       this.utilsSvc.presentToast({
-        message: 'Producto creado exitosamente',
+        message: 'Tool creado exitosamente',
         duration: 1500,
         color: 'success',
         position: 'middle',

@@ -23,7 +23,7 @@ export const authGuard: CanActivateFn = (route, state) => {
         if (user) resolve(true);
       }
       else {
-        utilSvc.routerLink('/auth');
+        firebaseSvc.singOut();
         resolve(false);
       }
     })
