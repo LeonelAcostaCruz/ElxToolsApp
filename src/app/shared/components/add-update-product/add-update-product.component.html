@@ -17,16 +17,72 @@
       Tomar/Seleccionar
     </ion-button>
 
-    <!-- =========Name============ -->
+    <!-- =========Tool============ -->
     <app-custom-input autocomplete="name" [control]="form.controls.name" type="text" label="Tool"></app-custom-input>
 
-    <!-- crea input email-->
+    <!-- crea input nombre-->
 
     <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
       <div *ngIf="form.controls.name.errors?.['required']">
         El numero de Tool es
       </div>
       <div *ngIf="form.controls.name.errors?.['min']">
+        El nombre deve contener al menos 3 caracteres
+      </div>
+    </div>
+
+    <!-- =========Prensa============ -->
+    <app-custom-input autocomplete="name" [control]="form.controls.press" type="text" label="Prensa"></app-custom-input>
+
+    <!-- crea input prensa-->
+
+    <div class="validators" *ngIf="form.controls.press.errors && form.controls.press.touched">
+      <div *ngIf="form.controls.press.errors?.['required']">
+        Ultima prensa que corrio
+      </div>
+      <div *ngIf="form.controls.press.errors?.['min']">
+        El nombre deve contener al menos 3 caracteres
+      </div>
+    </div>
+
+    <!-- =========Descripcion============ -->
+    <app-custom-input autocomplete="name" [control]="form.controls.description" type="text" label="Prensa"></app-custom-input>
+
+    <!-- crea input Descripcion-->
+
+    <div class="validators" *ngIf="form.controls.description">
+      <div *ngIf="form.controls.name.errors?.['required']">
+        Descripcion
+      </div>
+      <div *ngIf="form.controls.description.errors?.['minLenght']">
+        El nombre deve contener al menos 3 caracteres
+      </div>
+    </div>
+
+    <!-- =========Fecha eb que se bajo============ -->
+    <app-custom-input autocomplete="name" [control]="form.controls.fechabaja" type="text" label="Prensa"></app-custom-input>
+
+    <!-- crea input fecha baja-->
+
+    <div class="validators" *ngIf="form.controls.fechabaja">
+      <div *ngIf="form.controls.name.errors?.['required']">
+        Fecha en que se bajo
+      </div>
+      <div *ngIf="form.controls.name.errors?.['minLenght']">
+        El nombre deve contener al menos 3 caracteres
+      </div>
+    </div>
+
+    <!-- =========Turno baja============ -->
+    <app-custom-input autocomplete="name" [control]="form.controls.turnobaja" type="text" label="Prensa"></app-custom-input>
+
+    <!-- crea input turno de baja-->
+
+    <div class="validators" *ngIf="form.controls.turnobaja.errors && form.controls.turnobaja.touched">
+      <div *ngIf="form.controls.name.errors?.['required']">
+        Turno  en que se bajo el Tool
+      </div>
+      <div *ngIf="form.controls.turnobaja.errors?.['minLenght']">
         El nombre deve contener al menos 3 caracteres
       </div>
     </div>
@@ -47,15 +103,15 @@
     </div>
 
 
-      <!-- ========= Contador  =====   Hora de entrega======= -->
-      <app-custom-input autocomplete="contador" [control]="form.controls.horaEntrega" type=hours input
-        label="Hora en que estara disponible el Tool"></app-custom-input>
+      <!-- ========= Fecha de entrega======= -->
+      <app-custom-input autocomplete="fechaEntrega" [control]="form.controls.fechaEntrega" input type="Date"
+        label="Fecha de entrega del Tool"></app-custom-input>
 
-      <!-- crea input horaEntrega -->
+      <!-- crea input fechaEntrega -->
 
-      <div class="validators" *ngIf="form.controls.horaEntrega.errors && form.controls.horaEntrega.touched">
-        <div *ngIf="form.controls.horaEntrega.errors?.['required']">El campo es requerido</div>
-        <div *ngIf="form.controls.horaEntrega.errors?.['min']">La cantidad de horas deven ser especidifcadas</div>
+      <div class="validators" *ngIf="form.controls.fechaEntrega && form.controls.fechaEntrega.touched">
+        <div *ngIf="form.controls.fechaEntrega.errors?.['required']">El campo es requerido</div>
+        <div *ngIf="form.controls.fechaEntrega.errors?.['']">La cantidad de horas deven ser especidifcadas</div>
       </div>
 
 

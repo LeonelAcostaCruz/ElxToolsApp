@@ -16,12 +16,17 @@ export class AddUpdateProductComponent implements OnInit {
   @Input() product: Product;
 
   form = new FormGroup({
-    id: new FormControl(''),
     image: new FormControl('', [Validators.required]),
-    name: new FormControl(null, [Validators.required, Validators.min(3)]),
-    status: new FormControl('', [Validators.required, Validators.minLength(4)]), //price
-    horaEntrega: new FormControl(null, [Validators.required, Validators.minLength(4)]), //soldUnit
+    id: new FormControl(''),
 
+    tool: new FormControl(null, [Validators.required, Validators.min(3)]),
+    press: new FormControl(null, [Validators.required, Validators.min(3)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(20)]),
+    breakDownDate: new FormControl(null, [Validators.required]),
+    breakDownTurn: new FormControl(null, [Validators.required]),
+    status: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    requiredDate: new FormControl(null, [Validators.required]), 
+    coments: new FormControl('', [Validators.required, Validators.minLength(4)]),
   })
 
   firebaseSvc = inject(FirebaseService);

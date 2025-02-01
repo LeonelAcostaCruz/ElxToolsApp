@@ -13,7 +13,7 @@ export class MainPage implements OnInit {
 
   pages = [
     { title: 'Inicio', url: '/main/home', icon: 'home-outline' },
-    { title: 'Perfil', url: '/main/profile', icon: 'person-outline' },
+    // { title: 'Perfil', url: '/main/profile', icon: 'person-outline' },
 
     // contact: { title: 'Contact', url: 'contact', icon: 'mail' },
     // settings: { title: 'Settings', url:'settings', icon: 'cog' }

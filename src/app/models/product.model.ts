@@ -2,9 +2,18 @@ import { HomePageRoutingModule } from '../pages/main/home/home-routing.module';
 
 
 export interface Product {
-horaEntrega: number,
-id: string,
+
 image: string,
-name: 123,
-status: string
+id: string,
+    
+tool: number,
+press: number,
+description: string,
+breakDownDate: Date,
+breakDownTurn: number,
+status: string,
+requiredDate: Date,
+coments: string,
+
 }
+
