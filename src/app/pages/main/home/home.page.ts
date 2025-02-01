@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
     this.loading = true;
 
     let query = (
-      orderBy('horaEntrega', 'desc' )
+      orderBy('requiredDate', 'desc' )
     )
 
     let sub = this.firebaseSvc.getCollectionData(path, query).subscribe({

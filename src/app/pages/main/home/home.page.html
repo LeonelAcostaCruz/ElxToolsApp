@@ -15,10 +15,17 @@
           <img [src]="p.image" />
         </ion-avatar>
         <ion-label>
-          <div class="name">{{p.name}}</div> <!-- coloca el nombre en el item -->
+          <div class="name">{{p.tool}}</div> <!-- coloca el nombre en el item -->
           <div class="data">
-            <strong> Razon de falla:</strong> {{p.status}} <br>
-            <strong> Hora de entrega:</strong> {{p.horaEntrega}}
+            <strong> Prensa:</strong> {{p.press}} <br>
+            <strong> Descripcion:</strong> {{p.description}} <br>
+            <strong> Fecha en que fallo:</strong> {{p.breakDownDate}} <br>
+            <strong> Turno en que fallo:</strong> {{p.breakDownTurn}} <br>
+            <strong> Estatus:</strong> {{p.status}} <br>
+            <strong> Fecha requerida:</strong> {{p.requiredDate}} <br>
+            <strong> Comentairos:</strong> {{p.coments}} <br>
+           
+
           </div>
         </ion-label>
       </ion-item>

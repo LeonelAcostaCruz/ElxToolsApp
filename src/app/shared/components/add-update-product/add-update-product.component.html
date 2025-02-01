@@ -18,27 +18,27 @@
     </ion-button>
 
     <!-- =========Tool============ -->
-    <app-custom-input autocomplete="name" [control]="form.controls.name" type="text" label="Tool"></app-custom-input>
+    <app-custom-input autocomplete="tool" [control]="form.controls.tool" type="text" label="Tool"></app-custom-input>
 
-    <!-- crea input nombre-->
+    <!-- crea input tool-->
 
-    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
-      <div *ngIf="form.controls.name.errors?.['required']">
-        El numero de Tool es
+    <div class="validators" *ngIf="form.controls.tool.errors && form.controls.tool.touched">
+      <div *ngIf="form.controls.tool.errors?.['required']">
+        El numero de Tool es?
       </div>
-      <div *ngIf="form.controls.name.errors?.['min']">
+      <div *ngIf="form.controls.tool.errors?.['min']">
         El nombre deve contener al menos 3 caracteres
       </div>
     </div>
 
     <!-- =========Prensa============ -->
-    <app-custom-input autocomplete="name" [control]="form.controls.press" type="text" label="Prensa"></app-custom-input>
+    <app-custom-input autocomplete="press" [control]="form.controls.press" type="text" label="Prensa"></app-custom-input>
 
     <!-- crea input prensa-->
 
     <div class="validators" *ngIf="form.controls.press.errors && form.controls.press.touched">
       <div *ngIf="form.controls.press.errors?.['required']">
-        Ultima prensa que corrio
+        Ultima prensa que corrio?
       </div>
       <div *ngIf="form.controls.press.errors?.['min']">
         El nombre deve contener al menos 3 caracteres
@@ -46,56 +46,56 @@
     </div>
 
     <!-- =========Descripcion============ -->
-    <app-custom-input autocomplete="name" [control]="form.controls.description" type="text" label="Prensa"></app-custom-input>
+    <app-custom-input autocomplete="Descripción" [control]="form.controls.description" type="text" label="Descripción"></app-custom-input>
 
     <!-- crea input Descripcion-->
 
     <div class="validators" *ngIf="form.controls.description">
-      <div *ngIf="form.controls.name.errors?.['required']">
-        Descripcion
+      <div *ngIf="form.controls.description.errors?.['required']">
+        
       </div>
       <div *ngIf="form.controls.description.errors?.['minLenght']">
-        El nombre deve contener al menos 3 caracteres
+        El nombre deve contener al menos 20 caracteres
       </div>
     </div>
 
-    <!-- =========Fecha eb que se bajo============ -->
-    <app-custom-input autocomplete="name" [control]="form.controls.fechabaja" type="text" label="Prensa"></app-custom-input>
+    <!-- =========Fecha en que se bajo============ -->
+    <app-custom-input autocomplete="Fecha en que bajo el tool" [control]="form.controls.breakDownDate" type="Date" label="Fecha en que bajo el tool"></app-custom-input>
 
     <!-- crea input fecha baja-->
 
-    <div class="validators" *ngIf="form.controls.fechabaja">
-      <div *ngIf="form.controls.name.errors?.['required']">
-        Fecha en que se bajo
+    <div class="validators" *ngIf="form.controls.breakDownDate">
+      <div *ngIf="form.controls.breakDownDate">
+        
       </div>
-      <div *ngIf="form.controls.name.errors?.['minLenght']">
-        El nombre deve contener al menos 3 caracteres
+      <div *ngIf="form.controls.breakDownDate.errors?.['minLenght']">
+        Revisar la fecha correctamente
       </div>
     </div>
 
     <!-- =========Turno baja============ -->
-    <app-custom-input autocomplete="name" [control]="form.controls.turnobaja" type="text" label="Prensa"></app-custom-input>
+    <app-custom-input autocomplete="Turno en que bajo el tool" [control]="form.controls.breakDownTurn" type="text" label="Turno en que baja"></app-custom-input>
 
     <!-- crea input turno de baja-->
 
-    <div class="validators" *ngIf="form.controls.turnobaja.errors && form.controls.turnobaja.touched">
-      <div *ngIf="form.controls.name.errors?.['required']">
-        Turno  en que se bajo el Tool
+    <div class="validators" *ngIf="form.controls.breakDownTurn.errors && form.controls.breakDownTurn.touched">
+      <div *ngIf="form.controls.breakDownDate">
+        
       </div>
-      <div *ngIf="form.controls.turnobaja.errors?.['minLenght']">
+      <div *ngIf="form.controls.breakDownTurn.errors?.['min']">
         El nombre deve contener al menos 3 caracteres
       </div>
     </div>
 
-    <!-- ========= Status ======== falla ==== -->
+    <!-- ========= Status ========== -->
     <app-custom-input autocomplete="status" [control]="form.controls.status" type="text"
-      label="Razon de falla"></app-custom-input>
+      label="Status"></app-custom-input>
 
     <!-- crea input Status-->
 
     <div class="validators" *ngIf="form.controls.status.errors && form.controls.status.touched">
       <div *ngIf="form.controls.status.errors?.['required']">
-        Razon de falla
+        ELija el Status
       </div>
       <div *ngIf="form.controls.status.errors?.['minLenght']">
         La falla deve contener al menos 5 caracteres
@@ -104,15 +104,29 @@
 
 
       <!-- ========= Fecha de entrega======= -->
-      <app-custom-input autocomplete="fechaEntrega" [control]="form.controls.fechaEntrega" input type="Date"
+      <app-custom-input autocomplete="requiredDate" [control]="form.controls.requiredDate" input type="Date"
         label="Fecha de entrega del Tool"></app-custom-input>
 
-      <!-- crea input fechaEntrega -->
+      <!-- crea input requiredDate -->
 
-      <div class="validators" *ngIf="form.controls.fechaEntrega && form.controls.fechaEntrega.touched">
-        <div *ngIf="form.controls.fechaEntrega.errors?.['required']">El campo es requerido</div>
-        <div *ngIf="form.controls.fechaEntrega.errors?.['']">La cantidad de horas deven ser especidifcadas</div>
+      <div class="validators" *ngIf="form.controls.requiredDate && form.controls.requiredDate.touched">
+        <div *ngIf="form.controls.requiredDate.errors?.['required']">El campo es requerido</div>
+        <div *ngIf="form.controls.requiredDate.errors?.['']">La cantidad de horas deven ser especidifcadas</div>
       </div>
+
+      <!-- =========Comentarios============ -->
+    <app-custom-input autocomplete="coments" [control]="form.controls.coments" type="text" label="coments"></app-custom-input>
+
+    <!-- crea input Comentarios-->
+
+    <div class="validators" *ngIf="form.controls.coments">
+      <div *ngIf="form.controls.coments.errors?.['required']">
+        
+      </div>
+      <div *ngIf="form.controls.coments.errors?.['minLenght']">
+        El nombre deve contener al menos 20 caracteres
+      </div>
+    </div>
 
 
 
