@@ -13,6 +13,7 @@ breakDownDate: Date,
 breakDownTurn: number,
 status: string,
 requiredDate: Date,
+requiredhour: Date,
 coments: string,
 
 }
