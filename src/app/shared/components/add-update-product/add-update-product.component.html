@@ -46,7 +46,7 @@
     </div>
 
     <!-- =========Descripcion============ -->
-    <app-custom-input autocomplete="Descripción" [control]="form.controls.description" type="text" label="Descripción"></app-custom-input>
+    <app-custom-input autocomplete="Descripción" [control]="form.controls.description" type="text" label="Descripción de falla"></app-custom-input>
 
     <!-- crea input Descripcion-->
 
@@ -95,7 +95,7 @@
 
     <div class="validators" *ngIf="form.controls.status.errors && form.controls.status.touched">
       <div *ngIf="form.controls.status.errors?.['required']">
-        ELija el Status
+        Elija el Status
       </div>
       <div *ngIf="form.controls.status.errors?.['minLenght']">
         La falla deve contener al menos 5 caracteres
@@ -111,13 +111,24 @@
 
       <div class="validators" *ngIf="form.controls.requiredDate && form.controls.requiredDate.touched">
         <div *ngIf="form.controls.requiredDate.errors?.['required']">El campo es requerido</div>
-        <div *ngIf="form.controls.requiredDate.errors?.['']">La cantidad de horas deven ser especidifcadas</div>
+        <div *ngIf="form.controls.requiredDate.errors?.['']">La fecha deve ser especidifcadas</div>
+      </div>
+
+      <!-- ========= hora de entrega======= -->
+      <app-custom-input autocomplete="requiredhour" [control]="form.controls.requiredhour" input type="hours"
+        label="Hora de entrega del Tool"></app-custom-input>
+
+      <!-- crea input requiredhour -->
+
+      <div class="validators" *ngIf="form.controls.requiredhour && form.controls.requiredhour.touched">
+        <div *ngIf="form.controls.requiredhour.errors?.['required']">El campo es requerido</div>
+        <div *ngIf="form.controls.requiredhour.errors?.['']">La cantidad de horas deven ser especidifcadas</div>
       </div>
 
       
 
       <!-- =========Comentarios============ -->
-    <app-custom-input autocomplete="coments" [control]="form.controls.coments" type="text" label="coments"></app-custom-input>
+    <app-custom-input autocomplete="coments" [control]="form.controls.coments" type="text" label="Detalles de reparacion"></app-custom-input>
 
     <!-- crea input Comentarios-->
 

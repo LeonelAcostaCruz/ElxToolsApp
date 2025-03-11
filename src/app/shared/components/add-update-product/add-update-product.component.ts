@@ -1,6 +1,6 @@
 
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -26,6 +26,7 @@ export class AddUpdateProductComponent implements OnInit {
     breakDownTurn: new FormControl(null, [Validators.required]),
     status: new FormControl('', [Validators.required, Validators.minLength(4)]),
     requiredDate: new FormControl(null, [Validators.required]), 
+    requiredhour: new FormControl(null, [Validators.required]), 
     coments: new FormControl('', [Validators.required, Validators.minLength(4)]),
   })
 
@@ -45,6 +46,8 @@ export class AddUpdateProductComponent implements OnInit {
     const dataUrl = (await this.utilsSvc.takePicture()).dataUrl;
     this.form.controls.image.setValue(dataUrl);
   }
+
+  
 
   submit() {
     if (this.form.valid) {
