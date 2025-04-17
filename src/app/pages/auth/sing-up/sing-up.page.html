@@ -3,14 +3,27 @@
   <div class="d-flex-center">
     <!--contenedor de fomulario con la propiedad de flex center -->
 
-    <form formGoup="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+    <form
+      formGoup="form"
+      class="auth-form"
+      (ngSubmit)="submit()"
+      (keypress.enter)="submit()"
+    >
       <app-logo></app-logo>
       <!-- =========Name============ -->
-      <app-custom-input autocomplete="name" icon="person-outline" [control]="form.controls.name" type="text"
-        label="Nombre"></app-custom-input>
+      <app-custom-input
+        autocomplete="name"
+        icon="person-outline"
+        [control]="form.controls.name"
+        type="text"
+        label="Nombre"
+      ></app-custom-input>
       <!-- crea input email-->
 
-      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+      <div
+        class="validators"
+        *ngIf="form.controls.email.errors && form.controls.email.touched"
+      >
         <div *ngIf="form.controls.email.errors?.['required']">
           El nombre es requeridos
         </div>
@@ -19,11 +32,19 @@
         </div>
       </div>
       <!-- =========Email============ -->
-      <app-custom-input autocomplete="email" icon="mail-outline" [control]="form.controls.email" type="email"
-        label="Correo"></app-custom-input>
+      <app-custom-input
+        autocomplete="email"
+        icon="mail-outline"
+        [control]="form.controls.email"
+        type="email"
+        label="Correo"
+      ></app-custom-input>
       <!-- crea input email-->
 
-      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+      <div
+        class="validators"
+        *ngIf="form.controls.email.errors && form.controls.email.touched"
+      >
         <div *ngIf="form.controls.email.errors?.['required']">
           El correo es requeridos
         </div>
@@ -33,17 +54,30 @@
       </div>
 
       <!-- =========Password=========== -->
-      <app-custom-input [control]="form.controls.password" icon="lock-closed-outline" type="password"
-        label="Contraseña"></app-custom-input>
+      <app-custom-input
+        [control]="form.controls.password"
+        icon="lock-closed-outline"
+        type="password"
+        label="Contraseña"
+      ></app-custom-input>
       <!--crea input psw -->
 
-      <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+      <div
+        class="validators"
+        *ngIf="form.controls.password.errors && form.controls.password.touched"
+      >
         <div *ngIf="form.controls.password.errors?.['required']">
           La contraseña es requerida
         </div>
       </div>
 
-      <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+      <ion-button
+        expand="block"
+        mode="ios"
+        class="submit"
+        type="submit"
+        [disabled]="form.invalid"
+      >
         Registrate
         <ion-icon slot="end" name="person-add-aoutline"></ion-icon>
       </ion-button>

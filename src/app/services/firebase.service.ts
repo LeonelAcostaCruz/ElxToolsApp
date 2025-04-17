@@ -86,14 +86,14 @@ export class FirebaseService {
   async getDocument(path: string) {
     return (await getDoc(doc(getFirestore(), path))).data();
   }
-  // Agregar un doc
+  // Aggregar un doc
   addDocument(path: string, data: any) { // productos = tools
     return addDoc(collection(getFirestore(), path), data);
   }
 
   // almacenamiento de Fire storage
 
-  async upLoadImage(path: string, data_url: string) { //imagen especificamente
+  async upLoadImage(path: string, data_url: string) { //ikmagen especificamente
     return uploadString(ref(getStorage(), path), data_url, 'data_url').then(() => {
       return getDownloadURL(ref(getStorage(), path))
     })
